@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Poster · 16:9 編輯風</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  /* 編輯風：暖米底、深墨襯線大標、赭紅點綴、細線分組 */
+  :root {
+    --bg: #F4EFE7;        /* 主底色 */
+    --sand: #DFD3C3;      /* 插圖陰影、次要色塊 */
+    --ink: #2A2620;       /* 標題、段標 */
+    --ink-soft: #5A524A;  /* 副標、正文 */
+    --line: #BFB2A2;      /* 分隔線 */
+    --accent: #8B4532;    /* 赭紅：裝飾短線、插圖主色 */
+    --accent-soft: #F3D3BF;
+    --serif: 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', serif;
+    --sans: 'Noto Sans TC', 'Noto Sans CJK TC', 'Source Han Sans TC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #E6DFD3;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-break: strict;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .poster {
+    /* 以視窗寬高反推，整張海報塞進 viewport */
+    width: min(1920px, calc(100vw - 32px), calc((100dvh - 48px) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    background: var(--bg);
+    box-shadow: 0 20px 60px rgba(42, 38, 32, 0.12);
+    padding: 6% 6.2% 5%;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    container-type: inline-size;
+  }
+
+  /* 字級用 cqw 等比縮放；原尺寸 1920 寬，1cqw = 19.2px */
+
+  /* ============ 上半：標題 + 插圖 ============ */
+  .head {
+    display: grid;
+    grid-template-columns: 1fr 23cqw;
+    gap: 6cqw;
+    align-items: start;
+  }
+
+  .deco-line {
+    width: 3.6cqw;
+    height: 0.2cqw;
+    background: var(--accent);
+    margin-bottom: 3cqw;
+  }
+
+  .title {
+    font-family: var(--serif);
+    color: var(--ink);
+    line-height: 1.22;
+    letter-spacing: 0.01em;
+  }
+  .title-light { display: block; font-size: 6.1cqw; font-weight: 400; }
+  .title-bold  { display: block; font-size: 6.1cqw; font-weight: 900; }
+
+  .subtitle {
+    margin-top: 1.6cqw;
+    font-size: 1.75cqw;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* 插圖：疊放的版面示意，可換成任何 SVG 或圖片 */
+  .figure { position: relative; aspect-ratio: 384 / 450; margin-top: -0.6cqw; }
+  .figure .shadow {
+    position: absolute; left: 0; top: 12%; width: 85%; height: 88%;
+    background: var(--sand);
+  }
+  .figure .sheet {
+    position: absolute; right: 0; top: 0; width: 85%; height: 88%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 12% 12%;
+    display: flex; flex-direction: column; gap: 14%;
+  }
+  .figure .block {
+    background: var(--accent);
+    height: 38%;
+    padding: 10% 9%;
+    display: flex; flex-direction: column; gap: 14%;
+  }
+  .figure .block i { display: block; height: 0.5cqw; background: var(--accent-soft); }
+  .figure .block i:nth-child(1) { width: 85%; }
+  .figure .block i:nth-child(2) { width: 52%; }
+  .figure .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 9%; }
+  .figure .cols span { display: flex; flex-direction: column; gap: 0.9cqw; }
+  .figure .cols i { display: block; height: 0.18cqw; background: var(--line); }
+  .figure .cols i:first-child { height: 0.35cqw; background: var(--accent); }
+  .figure .cols i:last-child { width: 65%; }
+
+  /* ============ 分隔線 ============ */
+  .rule { height: 1px; background: var(--line); margin: 4.6cqw 0 3.4cqw; }
+
+  /* ============ 下半：三欄重點 ============ */
+  .points {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), 1fr);
+    gap: 4cqw;
+    align-content: start;
+  }
+  .point-head {
+    font-family: var(--serif);
+    font-size: 3.1cqw;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.6cqw;
+  }
+  .point-desc {
+    font-size: 1.75cqw;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+  <main class="poster">
+    <section class="head">
+      <div>
+        <div class="deco-line"></div>
+        <h1 class="title">
+          <span class="title-light">貼文設計的</span>
+          <span class="title-bold">三個基本原則</span>
+        </h1>
+        <p class="subtitle">從主張、字體到留白，讓讀者一眼找到重點。</p>
+      </div>
+
+      <!-- 主視覺：可換成概念圖、流程圖或照片；不需要時刪掉並把 .head 改成單欄 -->
+      <div class="figure" aria-hidden="true">
+        <div class="shadow"></div>
+        <div class="sheet">
+          <div class="block"><i></i><i></i></div>
+          <div class="cols">
+            <span><i></i><i></i><i></i></span>
+            <span><i></i><i></i><i></i></span>
+            <span><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- 重點欄：2–4 欄皆可，改 --cols 即可 -->
+    <section class="points" style="--cols: 3">
+      <div class="point">
+        <h2 class="point-head">先定主張</h2>
+        <p class="point-desc">先想清楚讀者要記住什麼，<br>再挑視覺。</p>
+      </div>
+      <div class="point">
+        <h2 class="point-head">字體少一點</h2>
+        <p class="point-desc">用一至兩種字體，<br>讓標題和內文各司其職。</p>
+      </div>
+      <div class="point">
+        <h2 class="point-head">留白引導視線</h2>
+        <p class="point-desc">把相關資訊排在一起，<br>在不同群組之間留空。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

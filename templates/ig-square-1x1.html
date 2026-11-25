@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Poster · 1:1 編輯風</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  /* 編輯風：赭紅標題色塊 + 暖米內容區，段標用赭紅、正文用深墨 */
+  :root {
+    --bg: #F4EFE7;
+    --ink: #2A2620;
+    --line: #BFB2A2;
+    --accent: #7A3B2E;       /* 標題色塊 */
+    --accent-text: #8B4532;  /* 段標 */
+    --on-accent: #FBF2E6;    /* 色塊上的文字 */
+    --serif: 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', serif;
+    --sans: 'Noto Sans TC', 'Noto Sans CJK TC', 'Source Han Sans TC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #E6DFD3;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-break: strict;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .poster {
+    width: min(1080px, calc(100vw - 32px), calc(100dvh - 48px));
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    box-shadow: 0 20px 60px rgba(42, 38, 32, 0.12);
+    display: grid;
+    grid-template-rows: 38.4% 1fr;
+    container-type: inline-size;
+  }
+
+  /* 原尺寸 1080 寬，1cqw = 10.8px */
+
+  /* ============ 標題色塊 ============ */
+  .head {
+    background: var(--accent);
+    color: var(--on-accent);
+    padding: 6.2cqw 7cqw 0;
+  }
+  .deco-line {
+    width: 3.6cqw;
+    height: 0.15cqw;
+    background: var(--on-accent);
+    margin-bottom: 2.4cqw;
+  }
+  .title { font-family: var(--serif); line-height: 1.2; letter-spacing: 0.01em; }
+  .title-light { display: block; font-size: 7.6cqw; font-weight: 400; }
+  .title-bold  { display: block; font-size: 7.6cqw; font-weight: 900; }
+  .subtitle {
+    margin-top: 3.4cqw;
+    font-size: 2.6cqw;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
+  }
+
+  /* ============ 重點清單 ============ */
+  .points {
+    padding: 5cqw 7cqw 4cqw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .point + .point {
+    border-top: 1px solid var(--line);
+    margin-top: 3.4cqw;
+    padding-top: 3.4cqw;
+  }
+  .point-head {
+    font-family: var(--serif);
+    font-size: 4.4cqw;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--accent-text);
+    margin-bottom: 1.6cqw;
+  }
+  .point-desc {
+    font-size: 3cqw;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+  <main class="poster">
+    <section class="head">
+      <div class="deco-line"></div>
+      <h1 class="title">
+        <span class="title-light">貼文設計的</span>
+        <span class="title-bold">三個基本原則</span>
+      </h1>
+      <p class="subtitle">從主張、字體到留白，讓讀者一眼找到重點。</p>
+    </section>
+
+    <!-- 方形建議 3 點；每點正文控制在一行 -->
+    <section class="points">
+      <div class="point">
+        <h2 class="point-head">先定主張</h2>
+        <p class="point-desc">先決定讀者要記住的一句話，再挑視覺。</p>
+      </div>
+      <div class="point">
+        <h2 class="point-head">字體少一點</h2>
+        <p class="point-desc">用一至兩種字體，做出標題和內文的層級。</p>
+      </div>
+      <div class="point">
+        <h2 class="point-head">留白引導視線</h2>
+        <p class="point-desc">相關資訊靠近，不同群組之間留空。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
